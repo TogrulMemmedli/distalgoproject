@@ -5,7 +5,6 @@ const router = require('./routes');
 const logger = require('./middlewares/logger');
 const errorHandlerMiddleware = require('./middlewares/errorHandler.middleware');
 const notFoundMiddleware = require('./middlewares/notFound.middleware');
-const seedDatabase = require('./seed');
 
 const app = express();
 
