@@ -150,56 +150,11 @@ module.exports = {
         popularity, budget, poster_url,
         DirectorId: directorId,
       });
-  
-      if (genreIds.length > 0) {
-        await movie.setGenres(genreIds);
-      }
-      if (actorIds.length > 0) {
-        await movie.setActors(actorIds);
-      }
-  
-      const fullMovie = await Movie.findByPk(movie.id, {
-        include: defaultIncludes,
-      });
-  
-      return { status: 201, data: fullMovie };
-    } catch (err) {
-      console.error("createMovie error:", err.message);
-      return { status: 400, error: "Failed to create movie" };
-    }
-  },
 
-  async createMovie(data) {
-    try {
-      const {
-        title, overview, year, votes, rating,
-        popularity, budget, poster_url,
-        directorId, genreIds = [], actorIds = []
-      } = data;
-  
-      if (typeof rating !== "number" || rating < 0 || rating > 10) {
-        return { status: 400, error: "Invalid rating" };
-      }
-  
-      if (!Number.isInteger(year) || year < 1800 || year > new Date().getFullYear()) {
-        return { status: 400, error: "Invalid year" };
-      }
-  
-      const director = await Director.findByPk(directorId);
-      if (!director) {
-        return { status: 404, error: "Director not found" };
-      }
-  
-      const movie = await Movie.create({
-        title, overview, year, votes, rating,
-        popularity, budget, poster_url,
-        DirectorId: directorId,
-      });
-  
-      if (genreIds.length > 0) {
+      if (genreIds.length > 0 && genreIds[0]!==0) {
         await movie.setGenres(genreIds);
       }
-      if (actorIds.length > 0) {
+      if (actorIds.length > 0 && actorIds[0]!==0) {
         await movie.setActors(actorIds);
       }
   
