@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const favicon = require('serve-favicon');
+const path = require("path")
 
 const { sequelize } = require('./config/database'); 
 const router = require('./routes/v2');
@@ -15,16 +17,17 @@ const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger)
 app.use(errorHandler)
 
 app.get("/", (req, res)=>{
-    res.send("The Movie App");
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-const path = require('path');
 
 const swaggerOptionsV1 = {
   definition: {
@@ -60,23 +63,8 @@ app.use('/api-docs/v2', swaggerUi.serveFiles(swaggerSpecV2), swaggerUi.setup(swa
 app.use('/api/v2', router);
 app.use('/api/v1', routerv1);
 
-const PORT = process.env.PORT || 3000;
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
 
-async function startServer() {
-    try {
-        await sequelize.authenticate();
-        console.log('Database connected!');
-
-        await sequelize.sync({ force: false });
-        console.log('Database synchronized!');
-
-        app.listen(PORT, ()=>{
-            console.log(`Server is running on http://localhost:${PORT}`);
-        })
-    } catch (err) {
-        console.error('Failed to start server:', err);
-        process.exit(1);
-    }    
-}
-
-startServer();
+module.exports = app;
