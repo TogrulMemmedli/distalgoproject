@@ -22,7 +22,7 @@ module.exports = {
     genreId,
     directorId,
     sort = "createdAt",
-    order = "DESC",
+    order = "ASC",
     search,
     actorsInclude = 1,
     genresInclude = 1
