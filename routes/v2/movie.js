@@ -12,7 +12,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/v1/movies:
+ * /api/v2/movies:
  *   get:
  *     summary: Retrieve all movies
  *     description: >
@@ -145,7 +145,7 @@ router.get('/', movieController.getAllMovies);
 
 /**
  * @swagger
- * /api/v1/movies/{id}:
+ * /api/v2/movies/{id}:
  *   get:
  *     summary: Get a movie by ID
  *     tags: [Movies]
@@ -165,7 +165,7 @@ router.get('/:id', movieController.getMovieById);
 
 /**
  * @swagger
- * /api/v1/movies:
+ * /api/v2/movies:
  *   post:
  *     summary: Create a new movie
  *     tags: [Movies]
@@ -212,7 +212,7 @@ router.post('/', movieController.createMovie);
 
 /**
  * @swagger
- * /api/v1/movies/{id}:
+ * /api/v2/movies/{id}:
  *   put:
  *     summary: Update a movie by ID
  *     tags: [Movies]
@@ -267,7 +267,7 @@ router.put('/:id', movieController.updateMovie);
 
 /**
  * @swagger
- * /api/v1/movies/{id}:
+ * /api/v2/movies/{id}:
  *   delete:
  *     summary: Delete a movie by ID
  *     tags: [Movies]
