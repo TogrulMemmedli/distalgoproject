@@ -12,7 +12,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/v1/directors:
+ * /api/v2/directors:
  *   get:
  *     summary: Retrieve all directors
  *     tags: [Directors]
@@ -57,7 +57,7 @@ router.get('/', directorController.getAllDirectors);
 
 /**
  * @swagger
- * /api/v1/directors/{id}:
+ * /api/v2/directors/{id}:
  *   get:
  *     summary: Get a director by ID
  *     tags: [Directors]
@@ -78,7 +78,7 @@ router.get('/:id', directorController.getDirectorById);
 
 /**
  * @swagger
- * /api/v1/directors:
+ * /api/v2/directors:
  *   post:
  *     summary: Create a new director
  *     tags: [Directors]
@@ -101,7 +101,7 @@ router.post('/', directorController.createDirector);
 
 /**
  * @swagger
- * /api/v1/directors/{id}:
+ * /api/v2/directors/{id}:
  *   put:
  *     summary: Update a director by ID
  *     tags: [Directors]
@@ -133,7 +133,7 @@ router.put('/:id', directorController.updateDirector);
 
 /**
  * @swagger
- * /api/v1/directors/{id}:
+ * /api/v2/directors/{id}:
  *   delete:
  *     summary: Delete a director by ID
  *     tags: [Directors]
@@ -154,7 +154,7 @@ router.delete('/:id', directorController.deleteDirector);
 
 /**
  * @swagger
- * /api/v1/directors/{id}/movies:
+ * /api/v2/directors/{id}/movies:
  *   get:
  *     summary: Get all movies directed by a specific director
  *     tags: [Directors]
