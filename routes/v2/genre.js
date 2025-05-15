@@ -12,7 +12,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/v1/genres:
+ * /api/v2/genres:
  *   get:
  *     summary: Retrieve all genres
  *     tags: [Genres]
@@ -26,7 +26,7 @@ router.get('/', genreController.getAllGenres);
 
 /**
  * @swagger
- * /api/v1/genres/{id}:
+ * /api/v2/genres/{id}:
  *   get:
  *     summary: Get a genre by ID
  *     tags: [Genres]
@@ -47,7 +47,7 @@ router.get('/:id', genreController.getGenreById);
 
 /**
  * @swagger
- * /api/v1/genres:
+ * /api/v2/genres:
  *   post:
  *     summary: Create a new genre
  *     tags: [Genres]
@@ -70,7 +70,7 @@ router.post('/', genreController.createGenre);
 
 /**
  * @swagger
- * /api/v1/genres/{id}:
+ * /api/v2/genres/{id}:
  *   put:
  *     summary: Update a genre by ID
  *     tags: [Genres]
@@ -102,7 +102,7 @@ router.put('/:id', genreController.updateGenre);
 
 /**
  * @swagger
- * /api/v1/genres/{id}:
+ * /api/v2/genres/{id}:
  *   delete:
  *     summary: Delete a genre by ID
  *     tags: [Genres]
@@ -123,7 +123,7 @@ router.delete('/:id', genreController.deleteGenre);
 
 /**
  * @swagger
- * /api/v1/genres/{id}/movies:
+ * /api/v2/genres/{id}/movies:
  *   get:
  *     summary: Get all movies for a specific genre
  *     tags: [Genres]
