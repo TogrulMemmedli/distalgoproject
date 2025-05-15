@@ -87,7 +87,10 @@ module.exports = {
 
   async updateMovie(req, res) {
     try {
-      const { id } = req.params;
+      const id = Number(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: "Invalid movie ID" });
+      }
       const updateData = req.body;
 
       const result = await movieService.updateMovie(id, updateData);
@@ -100,7 +103,10 @@ module.exports = {
 
   async deleteMovie(req, res) {
     try {
-      const { id } = req.params;
+      const id = Number(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: "Invalid movie ID" });
+    }
       const result = await movieService.deleteMovie(id);
 
       if (result.status === 204) {
